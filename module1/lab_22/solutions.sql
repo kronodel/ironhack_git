@@ -3,17 +3,6 @@
 USE ppub;
 
 /*Step 1: Calculate the royalty of each sale for each author and the advance for each author and publication
-
-Write a SELECT query to obtain the following output:
-
-- Title ID
-- Author ID
-- Advance of each title and author
-	The formula is:
-		advance = titles.advance * titleauthor.royaltyper / 100
-- Royalty of each sale
-	The formula is:
-		sales_royalty = titles.price * sales.qty * titles.royalty / 100 * titleauthor.royaltyper / 100
 */
 
 SELECT titleauthor.title_id, titleauthor.au_id, titles.advance * titleauthor.royaltyper / 100 as advance, titles.price * sales.qty * titles.royalty / 100 * titleauthor.royaltyper / 100 AS sales_royalty
@@ -25,15 +14,6 @@ ON titles.title_id = sales.title_id
 GROUP BY title_id;
 
 /*Step 2: Aggregate the total royalties for each title and author
-
-Using the output from Step 1, write a query, containing a subquery, to obtain the following output:
-
-    Title ID
-    Author ID
-    Aggregated royalties of each title for each author
-        Hint: use the SUM subquery and group by both au_id and title_id
-
-In the output of this step, each title should appear only once for each author.
 */
 
 SELECT titleauthor.title_id, titleauthor.au_id,

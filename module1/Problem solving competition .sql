@@ -32,3 +32,11 @@ SELECT MAX(Salary), MIN(Salary) FROM Employees;
 
 SELECT Department, AVG(Salary) FROM Employees
 GROUP BY Department;
+
+select * from Employees;
+
+SELECT c.name,  s.amount, s.year, s.department 
+FROM clients c
+LEFT JOIN  sales s
+ON s.client_id=c.id_client;
+
